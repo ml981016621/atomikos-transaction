@@ -1,0 +1,46 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }
+    dependencies {
+        classpath("org.springframework.boot:spring-boot-gradle-plugin:1.5.10.RELEASE")
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'idea'
+apply plugin: 'org.springframework.boot'
+
+jar {
+    baseName = 'mybatis-demo'
+    version =  '0.1.0'
+}
+
+repositories {
+    mavenCentral()
+}
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+dependencies {
+    compile('org.springframework.boot:spring-boot-starter-web')
+    // Google Java 工具包
+    compile group: 'com.google.guava', name: 'guava', version: '23.3-jre'
+    // Google Json 工具类
+    compile group: 'com.google.code.gson', name: 'gson', version: '2.8.2'
+    // 分布式事物管理工具 atomikos
+    compile group: 'org.springframework.boot', name: 'spring-boot-starter-jta-atomikos', version: '1.5.10.RELEASE'
+    // 阿里数据库链接工具类
+    compile group: 'com.alibaba', name: 'druid', version: '1.1.7'
+    // 集成 mybatis
+    compile group: 'org.mybatis.spring.boot', name: 'mybatis-spring-boot-starter', version: '1.3.1'
+    // 简化代码工具
+    compileOnly('org.projectlombok:lombok')
+    runtime('mysql:mysql-connector-java')
+    // spring boot 热加载
+    runtime('org.springframework.boot:spring-boot-devtools')
+    // 测试工具包
+    testCompile group: 'org.springframework.boot', name: 'spring-boot-starter-test', version: '1.5.10.RELEASE'
+}
