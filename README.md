@@ -1,1 +1,1 @@
-"业务的相关方法一定不要捕获异常，抛出来RunTimeException也不行，否则atomikos不能回滚，具体原因不明。"
+
